@@ -1,0 +1,15 @@
+{
+  "name": "first-app",
+  "version": "0.0.1",
+  "description": "A First Slack App using Bolt for JS",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gerald Loeffler",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/bolt": "^3.9.0"
+  }
+}

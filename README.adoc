@@ -1,0 +1,10 @@
+= First Slack app using Bolt JS
+
+Relies on:
+
+- node
+- Bolt JS
+- dotenv oh-my-zsh plugin
+- ngrok
+- Docker
+- kubectl

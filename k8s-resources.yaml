@@ -1,0 +1,86 @@
+#
+# Namespace
+#
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: first-slack-app
+---
+#
+# first-slack-app
+#
+apiVersion: v1
+kind: Secret
+metadata:
+  name: first-slack-app-secrets
+  namespace: first-slack-app
+  labels:
+    app: first-slack-app
+type: Opaque
+stringData:
+  SLACK_SIGNING_SECRET: "{{SLACK_SIGNING_SECRET}}"
+  SLACK_BOT_TOKEN: "{{SLACK_BOT_TOKEN}}"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: first-slack-app-configs
+  namespace: first-slack-app
+  labels:
+    app: first-slack-app
+data:
+  placeholder: "in case needed in future"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: first-slack-app
+  namespace: first-slack-app
+  labels:
+    app: first-slack-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: first-slack-app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: first-slack-app
+    spec:
+      containers:
+        - name: first-slack-app
+          image: "{{IMG}}"
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 1
+              memory: 128Mi
+            limits:
+              cpu: 2
+              memory: 256Mi
+          envFrom:
+            - configMapRef:
+                name: first-slack-app-configs
+            - secretRef:
+                name: first-slack-app-secrets
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: first-slack-app
+  namespace: first-slack-app
+  labels:
+    app: first-slack-app
+spec:
+  type: LoadBalancer
+  selector:
+    app: first-slack-app
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
