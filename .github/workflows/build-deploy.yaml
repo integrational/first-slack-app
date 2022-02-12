@@ -28,12 +28,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "17.2.0"
-      - name: Build and push Docker image
-        run: |
-          eval $ENV
-          ./build-docker.sh
-          ./login-docker.sh
-          ./push-docker.sh
+      # - name: Build and push Docker image
+      #   run: |
+      #     eval $ENV
+      #     ./build-docker.sh
+      #     ./login-docker.sh
+      #     ./push-docker.sh
       # - name: Deploy to k8s cluster
       #   run: |
       #     eval $ENV
