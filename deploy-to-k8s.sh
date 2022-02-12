@@ -28,3 +28,5 @@ cat k8s-resources.yaml                                              \
         -e 's,{{SLACK_BOT_TOKEN}},'"$SLACK_BOT_TOKEN"',g'           \
         -e 's,{{IMG}},'"$IMG"',g'                                   \
   | kubectl apply -f -
+# trigger rollout (necessary because using image tag "latest" in Deployment's pod template, so the above apply only triggers a rollout upon creation but not upon update)
+kubectl rollout restart -n first-slack-app deployment/first-slack-app
