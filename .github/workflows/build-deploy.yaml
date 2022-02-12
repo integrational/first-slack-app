@@ -34,10 +34,10 @@ jobs:
           ./build-docker.sh
           ./login-docker.sh
           ./push-docker.sh
-      - name: Deploy to k8s cluster
-        run: |
-          eval $ENV
-          ./deploy-to-k8s-with-deployment-container.sh
+      # - name: Deploy to k8s cluster
+      #   run: |
+      #     eval $ENV
+      #     ./deploy-to-k8s-with-deployment-container.sh
       - name: Get deployed endpoint hostname
         # probably does not work on initial deployment due to timing
         run: |
