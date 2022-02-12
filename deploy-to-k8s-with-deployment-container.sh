@@ -1,3 +1,6 @@
+#!/bin/bash
+set -Eeuo pipefail
+
 docker run --pull always --rm -it                                     \
   -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION \
   -e SLACK_SIGNING_SECRET -e SLACK_BOT_TOKEN -e IMG                   \
