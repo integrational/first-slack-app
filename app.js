@@ -40,7 +40,7 @@ app.event('app_home_opened', async ({ event, client, context }) => {
             elements: [
               {
                 type: "mrkdwn",
-                text: "This is First App JS Bolt app"
+                text: "This is First Slack App, developed with the Bolt JavaScript framework"
               }
             ]
           }
