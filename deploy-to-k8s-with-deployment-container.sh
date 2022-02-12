@@ -3,8 +3,7 @@ docker run --pull always --rm -it                                     \
   -e SLACK_SIGNING_SECRET -e SLACK_BOT_TOKEN -e IMG                   \
   -v /var/run/docker.sock:/var/run/docker.sock                        \
   -v $(pwd):/work -w /work                                            \
-  integrational/eks-client /bin/bash -c '
-    aws eks update-kubeconfig --name gerald-research --region eu-central-1
-    kubectl cluster-info
-    ./deploy-to-k8s.sh
-  '
+  integrational/eks-client /bin/bash -c                               \
+    'aws eks update-kubeconfig --name gerald-research --region eu-central-1;
+     kubectl cluster-info;
+     ./deploy-to-k8s.sh'
