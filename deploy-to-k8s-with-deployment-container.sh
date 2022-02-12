@@ -4,10 +4,7 @@ docker run --pull always --rm -it                                     \
   -v /var/run/docker.sock:/var/run/docker.sock                        \
   -v $(pwd):/work -w /work                                            \
   integrational/eks-client /bin/bash -c '
-    echo Connecting to EKS cluster
     aws eks update-kubeconfig --name gerald-research --region eu-central-1
-    echo Using this EKS cluster
     kubectl cluster-info
-    echo Deploying app
     ./deploy-to-k8s.sh
   '

@@ -3,7 +3,6 @@ docker run --pull always --rm -it                                     \
   -v /var/run/docker.sock:/var/run/docker.sock                        \
   -v $(pwd):/work -w /work                                            \
   integrational/eks-client /bin/bash -c '
-    aws eks update-kubeconfig --name gerald-research --region eu-central-1
-    kubectl cluster-info
-    exec $SHELL -l
+    aws eks update-kubeconfig --name gerald-research --region eu-central-1 > /dev/null
+    kubectl get service/first-slack-app -n first-slack-app -o json | jq ".status.loadBalancer.ingress[0].hostname"
   '
