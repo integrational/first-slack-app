@@ -1,5 +1,7 @@
 = First Slack app using Bolt JS
 
+image:https://github.com/integrational/first-slack-app/workflows/Build%20Deploy/badge.svg[]
+
 Relies on:
 
 - node
