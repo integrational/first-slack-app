@@ -1,6 +1,6 @@
 {
-  "name": "first-app",
-  "version": "0.0.1",
+  "name": "first-slack-app",
+  "version": "0.1.0",
   "description": "A First Slack App using Bolt for JS",
   "main": "app.js",
   "scripts": {
