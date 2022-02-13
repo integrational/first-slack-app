@@ -10,7 +10,7 @@ on:
       - master
 
 env:
-  # the same content as the local .env (lines of 'source VAR=val')
+  # the same content as the local .env (lines of 'export VAR=val')
   # must be eval-ed to set all env vars
   ENV: ${{ secrets.ENV }}
 
