@@ -19,6 +19,7 @@ metadata:
 type: Opaque
 stringData:
   SLACK_SIGNING_SECRET: "{{SLACK_SIGNING_SECRET}}"
+  SLACK_APP_TOKEN: "{{SLACK_APP_TOKEN}}"
   SLACK_BOT_TOKEN: "{{SLACK_BOT_TOKEN}}"
 ---
 apiVersion: v1

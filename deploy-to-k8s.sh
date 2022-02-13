@@ -10,6 +10,7 @@ cat k8s-resources.yaml                                              \
   | sed -e 's,{{APP}},'"$APP"',g'                                   \
         -e 's,{{IMG}},'"$IMG"',g'                                   \
         -e 's,{{SLACK_SIGNING_SECRET}},'"$SLACK_SIGNING_SECRET"',g' \
+        -e 's,{{SLACK_APP_TOKEN}},'"$SLACK_APP_TOKEN"',g'           \
         -e 's,{{SLACK_BOT_TOKEN}},'"$SLACK_BOT_TOKEN"',g'           \
   | kubectl apply -f -
 # trigger rollout (necessary because using image tag "latest" in Deployment's pod template, so the above apply only triggers a rollout upon creation but not upon update)

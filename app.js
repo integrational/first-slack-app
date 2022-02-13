@@ -3,8 +3,11 @@ const { App, Logger, LogLevel } = require('@slack/bolt')
 
 // Initializes your app with your bot token and signing secret
 const app = new App({
-  token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET,
+  appToken: process.env.SLACK_APP_TOKEN,
+  token: process.env.SLACK_BOT_TOKEN,
+  socketMode: false,
+  port: process.env.PORT || 3000,
   logLevel: LogLevel.DEBUG
 })
 
@@ -40,7 +43,7 @@ app.event('app_home_opened', async ({ event, client, context }) => {
             elements: [
               {
                 type: "mrkdwn",
-                text: "This is First Slack App, developed with the Bolt JavaScript framework"
+                text: "A First Slack App using Bolt for JS"
               }
             ]
           }
@@ -54,12 +57,11 @@ app.event('app_home_opened', async ({ event, client, context }) => {
   }
 })
 
-// graceful interrupt
+// enable graceful interrupt
 process.on('SIGINT', () => process.exit(0))
 
-  ; // otherwise intend is confused
+  ; // to fix auto-intendation
 (async () => {
-  // Start app
-  await app.start(process.env.PORT || 3000)
-  console.info('First App JS Bolt app is running!')
+  await app.start()
+  console.info('A First Slack App using Bolt for JS has started!')
 })()
