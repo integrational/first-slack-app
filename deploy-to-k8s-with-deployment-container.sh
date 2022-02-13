@@ -9,7 +9,7 @@ docker run --pull always --rm -t                                      \
   -v /var/run/docker.sock:/var/run/docker.sock                        \
   -v $(pwd):/work -w /work                                            \
   integrational/eks-client /bin/bash -c "
-    aws eks update-kubeconfig --name $K8S_CLUSTER_NAME --region $K8S_CLUSTER_REGION
+    aws eks update-kubeconfig --name $K8S_CLUSTER_NAME --region $K8S_CLUSTER_REGION > /dev/null
     kubectl cluster-info
     ./deploy-to-k8s.sh
   "

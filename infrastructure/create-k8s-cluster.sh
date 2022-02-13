@@ -8,5 +8,6 @@ docker run --pull always --rm -t                                      \
   -v $(pwd):/work -w /work                                            \
   integrational/eks-client /bin/bash -c "
     aws sts get-caller-identity
-    eksctl delete cluster --name $K8S_CLUSTER_NAME --region $K8S_CLUSTER_REGION
+    eksctl create cluster --name $K8S_CLUSTER_NAME --region $K8S_CLUSTER_REGION --node-type m5.large --nodes 2 --alb-ingress-access --timeout 60m
+    kubectl cluster-info
   "
