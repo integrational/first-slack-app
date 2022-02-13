@@ -1,5 +1,6 @@
 #
-# Use this template to populate .env and then copy to the GitHub Actions Secret called ENV !
+# Use this template to populate .env 
+# Then copy the contents of .env without comment lines to the GitHub Actions Secret called ENV !
 #
 # build and deploy
 export APP=

@@ -10,7 +10,8 @@ on:
       - master
 
 env:
-  # the same content as the local .env (lines of 'export VAR=val')
+  # the same contents as the local .env
+  # but with all comment lines removed: must contain only 'export VAR=val' lines
   # must be eval-ed to set all env vars
   ENV: ${{ secrets.ENV }}
 
@@ -31,7 +32,6 @@ jobs:
       - name: Build and push Docker image
         run: |
           eval $ENV
-          echo img0 $IMG
           ./build-docker.sh
           ./login-docker.sh
           ./push-docker.sh
