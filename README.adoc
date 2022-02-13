@@ -5,7 +5,7 @@ image:https://github.com/integrational/first-slack-app/workflows/Build%20Deploy/
 Setup:
 
 . Populate file `.env` from the template file `env-template`
-. Then copy the content of `.env` into the GitHub Actions Secret called `ENV`
+. Then copy the contents of `.env` without comment lines into the GitHub Actions Secret called `ENV`
 . Then build and run either locally or on a k8s cluster, using the supplied scripts
 . See link:.github/workflows/build-deploy.yaml[build-deploy.yaml] for the GitHub Actions CI/CD pipeline that does this
 
